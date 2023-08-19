@@ -42,51 +42,17 @@ Computer uses Math.floor(Math.random()*3) to generate either and output of 0 || 
      use output to assign value to computerChoice.
      
 Use random number generated from Math.floor to assign values to a varible.     
-     The value from 0 Value = Rock, 1 Value = Paper, 2 value = Scissors.*/  
-
-    function getComputerChoice(){
-        return (Math.floor(Math.random()*3) )
-        }
-
-    let computerSelection = getComputerChoice()
-
+     The value from 0 Value = Rock, 1 Value = Paper, 2 value = Scissors.
      
-/*Ask user a question "What do you choose-Rock? Paper? Scissors?" using a prompt.
-
+     
+     
+     
      prompt must be able to accept either uppercase, lowercase and a mixture.
-        use .lowerCase before converting to strings
+     use .lowerCase before converting to strings
      convert strings to numbers so they can be compared to the computer random generated variable
-     convert "Rock" = 0, Paper = 1 and Scissors = 2
-*/
-    function getUserChoice(){ 
-    let userSelection = prompt("Rock Paper or Scissors?","Enter Choice Here")
-    userSelection = userSelection.toLowerCase()
+     convert "Rock" = 0, Paper = 1 and Scissors = 2     */  
 
-        if (userSelection === "rock"){
-            userSelection = 0
-        }else if (userSelection ==="paper"){
-            userSelection = 1
-        }else if (userSelection ==="scissors"){
-            userSelection = 2
-        }else{
-            alert("Plese Check spelling and try agian")
-        }
-    return userSelection     
-    }
-    
-    getUserChoice()
-
-/*
-compare input-variable function:
-    if (computerChoice === 2 && userChoice ===1) {
-        return computerCounter = computerCounter++
-        alert("You Loose!!! Scissors beats Paper" )
-    }else if (computerChoice === 2 && userChoice === 0) {
-        return userCounter = userCounter++
-    }
-    else
-
-End of Round:
+     /*End of Round:
      console.log each round. alert (You loose/Win winner beats looser. )
 
 End Game:
@@ -97,3 +63,89 @@ End Game:
     
 */
 
+
+
+    let computerCounter = 0
+    let userCounter = 0
+    
+    
+    function getComputerChoice(){
+        let computerChoice = (Math.floor(Math.random()*3))
+        return computerChoice;
+    }
+
+         function getUserChoice(){ 
+        let userSelection = prompt("Rock Paper or Scissors?","Enter Choice Here")
+        userSelection = userSelection.toLowerCase()
+
+        if (userSelection === "rock"){
+            userSelection = 0
+        }else if (userSelection ==="paper"){
+            userSelection = 1
+        }else if (userSelection ==="scissors"){
+            userSelection = 2
+        }else{
+            alert("Plese Check spelling and try agian")
+        }
+        return userSelection     
+    }
+    
+    function playRound (computerSelection, playerSelection){
+    
+        if (computerSelection === 2 && playerSelection ===1) {
+            computerCounter++;
+            alert("You Loose!!! Scissors beats Paper");
+
+        }else if (computerSelection === 2 && playerSelection === 0) {
+            userCounter++;
+            alert("You Win, Rock Beats Scissors")
+
+        }else if (computerSelection === 2 && playerSelection ===2) {
+             alert("Tie...Try Again?")
+
+        }else if (computerSelection === 1 && playerSelection ===0) {
+            computerCounter++;
+            alert("You Loose!!! Paper beats Rock");
+
+        }else if (computerSelection === 1 && playerSelection === 2) {
+            userCounter++;
+            alert("You Win, Scissors Beats Paper")
+
+        }else if (computerSelection === 1 && playerSelection ===1) {
+             alert("Tie...Try Again?")
+
+        }else if (computerSelection === 0 && playerSelection ===1) {
+            userCounter++;
+            alert("You win!!! Paper beats Rock");
+
+        }else if (computerSelection === 0 && playerSelection === 2) {
+            computerCounter++;
+            alert("You Loose, Rock Beats Scissors")
+
+        }else if (computerSelection === 0 && playerSelection ===0) {
+             alert("Tie...Try Again?")
+
+        }else{
+            alert("Something Went Wrong.")
+        
+        }
+        return computerCounter, userCounter;
+    }    
+    
+        
+  function game(){
+    playRound(getComputerChoice(),getUserChoice())
+        if(userCounter < 5 && computerCounter < 5){
+            console.log(userCounter,computerCounter)
+            game()
+            
+        }else if (userCounter === 5){
+        console.log(`Great Job, you beat the computer with a score of ${userCounter} to ${computerCounter}`)
+        
+        }else if(computerCounter === 5){
+        console.log(`You loose to computer with a score of ${userCounter} to ${computerCounter}`)
+        }else{
+
+        }
+    }    
+    game()
