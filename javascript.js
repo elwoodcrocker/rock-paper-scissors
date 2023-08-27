@@ -62,9 +62,6 @@ End Game:
 
     
 */
-
-
-
     let computerCounter = 0
     let userCounter = 0
     
@@ -72,68 +69,61 @@ End Game:
     function getComputerChoice(){
         let computerChoice = (Math.floor(Math.random()*3))
         return computerChoice;
+
     }
 
-         function getUserChoice(){ 
-        let userSelection = prompt("Rock Paper or Scissors?","Enter Choice Here")
-        userSelection = userSelection.toLowerCase()
-
-        if (userSelection === "rock"){
-            userSelection = 0
-        }else if (userSelection ==="paper"){
-            userSelection = 1
-        }else if (userSelection ==="scissors"){
-            userSelection = 2
-        }else{
-            alert("Plese Check spelling and try agian")
-        }
-        return userSelection     
-    }
     
-    function playRound (computerSelection, playerSelection){
     
-        if (computerSelection === 2 && playerSelection ===1) {
-            computerCounter++;
-            alert("You Loose!!! Scissors beats Paper");
+            
+    const buttonRock = document.querySelector('.button-rock')
 
-        }else if (computerSelection === 2 && playerSelection === 0) {
-            userCounter++;
-            alert("You Win, Rock Beats Scissors")
+    buttonRock.addEventListener('click', () =>{
+        playRound(getComputerChoice(),0)
+    } );
 
-        }else if (computerSelection === 2 && playerSelection ===2) {
-             alert("Tie...Try Again?")
+    const buttonPaper = document.querySelector('.button-paper')
 
-        }else if (computerSelection === 1 && playerSelection ===0) {
-            computerCounter++;
-            alert("You Loose!!! Paper beats Rock");
+    buttonPaper.addEventListener('click', () =>{
+        playRound(getComputerChoice(),1)
+    } );
 
-        }else if (computerSelection === 1 && playerSelection === 2) {
-            userCounter++;
-            alert("You Win, Scissors Beats Paper")
+    const buttonScissors = document.querySelector('.button-scissors')
 
-        }else if (computerSelection === 1 && playerSelection ===1) {
-             alert("Tie...Try Again?")
+    buttonScissors.addEventListener('click', () =>{
+        playRound(getComputerChoice(),2)
+    } );
 
-        }else if (computerSelection === 0 && playerSelection ===1) {
-            userCounter++;
-            alert("You win!!! Paper beats Rock");
 
-        }else if (computerSelection === 0 && playerSelection === 2) {
-            computerCounter++;
-            alert("You Loose, Rock Beats Scissors")
 
-        }else if (computerSelection === 0 && playerSelection ===0) {
-             alert("Tie...Try Again?")
 
-        }else{
-            alert("Something Went Wrong.")
         
+            
+    
+    function playRound(computerSelection, playerSelection){
+        
+        if (computerSelection === playerSelection){
+            alert('TryAgain!!')
+            return
+
+        }else if ((computerSelection === 2 && playerSelection ===1) || 
+                  (computerSelection === 1 && playerSelection ===0) ||
+                  (computerSelection === 0 && playerSelection ===2)){
+                
+                computerCounter++;
+
+
+        }else{
+         
+            userCounter++;
+             
         }
+        console.log(computerCounter,userCounter)
         return computerCounter, userCounter;
+        
     }    
     
         
-  function game(){
+  /*function game(){
     playRound(getComputerChoice(),getUserChoice())
         if(userCounter < 5 && computerCounter < 5){
             console.log(userCounter,computerCounter)
@@ -147,5 +137,9 @@ End Game:
         }else{
 
         }
-    }    
-    game()
+    }
+    */   
+    
+
+
+    
