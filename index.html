@@ -8,18 +8,16 @@
     <link rel="stylesheet" href="./rps.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic" rel="stylesheet">
 </head>
-<body>
+<body class="body">
     <div class ="header">
         <p>Would you like to play a game of <strong>Rock Paper Scissors?</strong></p>
     </div>
     <div class="container">
         <div class="play-container">
-            
             <div class="card">
                 <button class =button-rock>
                     <img src="./images/noun-fist-477918.png" alt="Rock Button">
                 </button>
-
             </div>
 
             <div class ="card">
@@ -36,24 +34,25 @@
         </div>
 
         <div class ="score-container">
-            
             <div class="player-score">
                 <div class = "card">
                     <img src="./images/noun-human-3612371.png" alt="User Icon">
                 </div>
-
+                <p class = user-score-display>Your Score: 0.</p>
             </div>
 
             <div class="vs-button">
                 <div class="card">
                     <img src="./images/noun-versus-4777237.png" alt="Versus Icon">
                 </div>
+                <p class = "vs-display">------------------</p>
             </div>
 
             <div class="computer-score">
                 <div class = "card">
                     <img src="./images/noun-laptop-4039216.png" alt="Computer Icon">
                 </div>
+                <p class="computer-score-display">Computer Score: 0.</p>
             </div>
         </div>
     </div>

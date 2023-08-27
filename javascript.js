@@ -62,12 +62,15 @@ End Game:
 
     
 */
-    let computerCounter = 0
-    let userCounter = 0
+    let computerCounter = 0;
+    let userCounter = 0;
+    const versusDisplay = document.querySelector('.vs-display');
+    const pageHeader = document.querySelector('.header');
+    const pageBody =document.querySelector('.body');
     
     
     function getComputerChoice(){
-        let computerChoice = (Math.floor(Math.random()*3))
+        let computerChoice = (Math.floor(Math.random()*3));
         return computerChoice;
 
     }
@@ -76,19 +79,19 @@ End Game:
     const buttonRock = document.querySelector('.button-rock')
 
     buttonRock.addEventListener('click', () =>{
-        playRound(getComputerChoice(),0)
+        playRound(getComputerChoice(),0);
     } );
 
     const buttonPaper = document.querySelector('.button-paper')
 
     buttonPaper.addEventListener('click', () =>{
-        playRound(getComputerChoice(),1)
+        playRound(getComputerChoice(),1);
     } );
 
     const buttonScissors = document.querySelector('.button-scissors')
 
     buttonScissors.addEventListener('click', () =>{
-        playRound(getComputerChoice(),2)
+        playRound(getComputerChoice(),2);
     } );
 
 
@@ -100,7 +103,7 @@ End Game:
     function playRound(computerSelection, playerSelection){
         
         if (computerSelection === playerSelection){
-            alert('TryAgain!!')
+            versusDisplay.textContent = 'Tie, Try Again!!!'
             return
 
         }else if ((computerSelection === 2 && playerSelection ===1) || 
@@ -108,33 +111,57 @@ End Game:
                   (computerSelection === 0 && playerSelection ===2)){
                 
                 computerCounter++;
+                versusDisplay.textContent = 'WIN!!--->';
 
 
         }else{
          
-            userCounter++;
+            userCounter++;;
+            versusDisplay.textContent = '<---WIN!!';
              
         }
-            updateScore(userCounter,computerCounter)
+            updateScore(userCounter,computerCounter);
         
     }    
     
         
     function updateScore(player,computer){
+
+    const userDisplay = document.querySelector('.user-score-display')
+    const computerDisplay = document.querySelector('.computer-score-display')
+        
         
         if(player < 5 && computer < 5){
-            console.log(userCounter,computerCounter)
+            userDisplay.textContent = `Your Score: ${userCounter}.`;
+            computerDisplay.textContent = `computer Score: ${computerCounter}.`
+            console.log(userCounter,computerCounter);
             return
             
         }else if (player === 5){
-        console.log(`Great Job, you beat the computer with a score of ${userCounter} to ${computerCounter}`)
-        
+        pageHeader.textContent = `Great Job, you beat the computer with a score of ${userCounter} to ${computerCounter}`
+        userDisplay.textContent = `Your Score: ${userCounter}.`;
+        computerDisplay.textContent = `computer Score: ${computerCounter}.`;
+        versusDisplay.textContent = 'Click to Refresh';
+
+        versusDisplay.addEventListener('click',() =>{
+            location.reload();
+        })
+               
         }else if(computer === 5){
-        console.log(`You loose to computer with a score of ${userCounter} to ${computerCounter}`)
+        pageHeader.textContent = `You loose to computer with a score of ${userCounter} to ${computerCounter}.`;
+        userDisplay.textContent = `Your Score: ${userCounter}.`;
+        computerDisplay.textContent = `computer Score: ${computerCounter}.`;
+        versusDisplay.textContent = 'Click to Refresh';
+        
+        versusDisplay.addEventListener('click',() =>{
+            location.reload();
+        })
         
         }
         return   
     }
+
+
 
 
     
