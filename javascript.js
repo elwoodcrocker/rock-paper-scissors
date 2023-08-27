@@ -73,8 +73,6 @@ End Game:
     }
 
     
-    
-            
     const buttonRock = document.querySelector('.button-rock')
 
     buttonRock.addEventListener('click', () =>{
@@ -117,29 +115,26 @@ End Game:
             userCounter++;
              
         }
-        console.log(computerCounter,userCounter)
-        return computerCounter, userCounter;
+            updateScore(userCounter,computerCounter)
         
     }    
     
         
-  /*function game(){
-    playRound(getComputerChoice(),getUserChoice())
-        if(userCounter < 5 && computerCounter < 5){
+    function updateScore(player,computer){
+        
+        if(player < 5 && computer < 5){
             console.log(userCounter,computerCounter)
-            game()
+            return
             
-        }else if (userCounter === 5){
+        }else if (player === 5){
         console.log(`Great Job, you beat the computer with a score of ${userCounter} to ${computerCounter}`)
         
-        }else if(computerCounter === 5){
+        }else if(computer === 5){
         console.log(`You loose to computer with a score of ${userCounter} to ${computerCounter}`)
-        }else{
-
+        
         }
+        return   
     }
-    */   
-    
 
 
     
